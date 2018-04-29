@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="eApp">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- AngularJS Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Module -->
+	<script src="app.js"></script>
+	<!-- Contrller -->
+	<script src="PRACTICE1.js"></script>
+	<title>PRACTICE1</title>
+	<style>
+		.default {
+			display: none;
+		}
+
+		.error {
+			display: block;
+			color: red;
+		}
+	</style>
+</head>
+
+<body ng-controller="PRACTICE1">
+	<form name="inputForm">
+		<span>編號:</span>
+		<input type="number" ng-required="true" name="id" ng-model="inputValue.id" ng-init="inputValue.id='' ">
+		<span>姓名:</span>
+		<input type="text" name="name" ng-required="true" ng-model="inputValue.name" ng-init="inputValue.name='' ">
+		<br>
+		<span ng-class="{'error': inputForm.name.$valid  || inputForm.id.$valid }" class="default">test ng-class</span>
+		<button ng-click="( inputForm.name.$valid || inputForm.id.$valid  ) && query()">查詢</button>&nbsp;
+		<button ng-click="clear() ">清除</button> 
+	</form>
+	
+</body>
+
+</html>

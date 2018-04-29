@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html ng-app="eApp">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- AngularJS Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Module -->
+	<script src="app.js"></script>
+	<!-- Contrller -->
+	<script src="CONTROLLER/INDEXCONTROLLER.js"></script>
+	<script src="CONTROLLER/QUERYPANELCONTROLLER.js"></script>
+	<script src="CONTROLLER/UPDATECUSTOMERCONTROLLER.js"></script>
+	<script src="CONTROLLER/QUERYRESULTCONTROLLER.js"></script>
+	<title>INDEX</title>
+	<style>
+		/**/
+
+		.panel {
+			border: 1px solid #529df9;
+			width: 90%;
+			margin: 0 auto;
+			border-radius: 3px;
+			margin-top: 10px;
+			padding-bottom: 2.5%;
+		}
+
+		.panel>form>div { 
+			display: inline-block;
+			margin : 2% 0;
+		}
+
+		/*--queryCustomer and updateCustomer panel css*/
+
+		.queryNUpdatePanel input {
+			width: 60%;
+		}
+
+		.queryNUpdatePanel span {
+			text-align: right;
+			width: 30%;
+			display: inline-block;
+		}
+
+		.queryNUpdatePanel>div {
+			width: 48%;
+		}
+
+		.queryNUpdatePanel select {
+			width: 61.5%;
+		}
+
+		.btn {
+			margin-left: 38%;
+		}
+		.PanelTitle{
+			background:#529df9 ;
+			display:block;
+			width:100%;
+			text-align: center;
+
+		}
+
+		/*query Result Table*/
+
+		.queryResultTable {
+			border: 1px solid black;
+			border-spacing: 0;
+		}
+
+		.queryResultTable td {
+			border: 1px solid black;
+
+		}
+
+		 
+	</style>
+</head>
+
+<body ng-controller="INDEX" ng-init="init()" >
+
+	<div style="width:50%; border:1px solid black;margin:0 auto;">
+
+		<div class="panel">
+			<div>
+				<span>查詢面板：</span>
+				<input type="checkbox" ng-click="queryPanel()" ng-model="queryPanelValue" ng-true-value="'1'" ng-false-value="'0'" ng-checked='1'
+				/>
+			</div>
+			<div>
+				<span>修改面板：</span>
+				<input type="checkbox" ng-click="updatePanel()" ng-model="updatePanelValue"  ng-true-value="'1'" ng-false-value="'0'" ng-checked='1'
+				/>
+			</div>
+		</div>
+
+		<div ng-include="querypanelLocation"></div>
+		<div ng-include="updatepanelLocation"></div>
+		<div ng-include="panelLocation.queryRes"></div>
+
+	 
+
+
+	</div>
+</body>
+
+</html>

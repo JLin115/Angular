@@ -1,0 +1,31 @@
+<div  class="panel" ng-controller="QUERYPANEL">
+	<div class="PanelTitle">查詢客戶資料</div>
+
+	<form name="queryPanelForm" class=" queryNUpdatePanel">
+		<div class="test">
+			<span>客戶編號：</span>
+			<input type="text" placeholder=" 請輸入..." name="CUST_ID" ng-model="inputValue.CUST_ID" ng-init="inputValue.CUST_ID=''" required>
+ 
+		</div>
+		
+		<div>
+			<span>客戶名稱：</span>
+			<input type="text" placeholder=" 請輸入..." name="CUST_NAME" ng-model="inputValue.CUST_NAME" ng-init="inputValue.CUST_NAME=''" required/>
+		</div>
+		<br>
+		<div>
+			<span>等級：</span>								
+			<select ng-model="inputValue.RESETGRADSELECT" ng-options="custGrad.PARAM_CODE as custGrad.PARAM_NAME for custGrad in custGrads" ng-init="inputValue.RESETGRADSELECT=''">
+				<option value="">請選擇</option>
+			</select>
+		</div>
+		<div>
+			<span>入會日期：</span>
+			<input type="date" placeholder=" 年/月/日" ng-model="inputValue.ENTRY_DATE " ng-init="inputValue.ENTRY_DATE=''" />
+		</div> 
+	</form> 
+	<hr>
+	<button class="btn" ng-click="queryCustomer()  ">查詢</button>&nbsp;
+	<button ng-click="clear()">清除</button>
+
+</div>

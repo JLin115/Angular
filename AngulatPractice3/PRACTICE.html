@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="eApp">
+	<head>
+	    <meta charset="UTF-8">
+	    <!-- AngularJS Library -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	    <!-- Module -->
+	    <script src="app.js"></script>
+	    <!-- Contrller -->
+	    <script src="PRACTICE.js"></script>
+	    <title>PRACTICE</title>
+		<style>
+		table{
+		width:60%;
+		margin:0  auto;
+		border:1px solid black; 
+		border-spacing:0; 
+		} 
+		</style>
+	</head>
+	<body ng-controller="PRACTICE"> 
+	<table border="1">
+		<tr>
+			<td>編號</td>
+			<td>欄位A</td>
+			<td>欄位B</td>
+		</tr>
+		<tr ng-repeat="x in custDatas" >
+			<td>{{ $index + 5  }}</td>
+			<td ng-bind-html="x.A | formatName | trustAsHtml"></td>
+			<td ng-bind-html="x.B | formatData | trustAsHtml"></td> 
+		</tr> 
+	</table> 
+	</body>
+</html>
