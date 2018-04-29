@@ -33,7 +33,14 @@
 		<button ng-click="( inputForm.name.$valid || inputForm.id.$valid  ) && query()">查詢</button>&nbsp;
 		<button ng-click="clear() ">清除</button> 
 	</form>
-	
+
+
+	<div ng-repeat="x in custData" > 
+		{{x.CUST_NAME}}
+		<span ng-repeat="y in custGrads | filter : x.VIP_CODE "  ng-bind="y.PARAM_NAME"> 
+		</span>
+	</div>
+ 
 </body>
 
 </html>

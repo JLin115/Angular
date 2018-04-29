@@ -4,7 +4,7 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 		 
 			$rootScope.queryResult.length=0;
 			   
-			var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd");
+		/*	var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd");
 			 
 			for(var i = 0  ;  i < $scope.custData.length ; i++){  
 				if(angular.isUndefined($scope.inputValue.CUST_ID ) || $scope.inputValue.CUST_ID == ''  || $scope.inputValue.CUST_ID == $scope.custData[i].CUST_ID){ 
@@ -16,7 +16,10 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 						}
 					}
 				} 
-			}
+			}*/
+
+			$scope.$emit('query',$scope.inputValue) 
+
 		}
 
 		$scope.clear = function () {

@@ -267,6 +267,9 @@ eApp.controller('INDEX',
 		} 
 		$rootScope.queryResult=[];
 
+		$scope.$on('query',function($event, inputValue){ 
+			$scope.$broadcast('query2',inputValue) 
+		}) 
  
 
 

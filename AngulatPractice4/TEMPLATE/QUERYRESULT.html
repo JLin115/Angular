@@ -10,11 +10,13 @@
 			<tr ng-repeat="x in queryResult   ">
 				<td ng-bind="x.CUST_ID"></td>
 				<td ng-bind="x.CUST_NAME"></td>
-				<td ng-bind="x.VIP_CODE |custGragFilter"></td>
+				<td ng-repeat="y in custGrads |filter : x.VIP_CODE" ng-bind="y.PARAM_NAME"></td>
 				<td ng-bind="x.DEPOSIT | number : 0"></td>
 				<td ng-bind="x.ENTRY_DATE | date:'yyyy/MM/dd'"></td>
 			</tr> 
 
 			
 		</table>
+
+		<div ng-bind="inputValue.CUST_NAME"></div>
 	</div>
