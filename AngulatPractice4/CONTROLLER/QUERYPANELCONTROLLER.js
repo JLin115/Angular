@@ -2,9 +2,9 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 	//$filter('date')($scope.inputValue.ENTRY_DATE, 'yyyy-MM-dd')
 	$scope.queryCustomer = function () { 
 		 
-			$rootScope.queryResult.length=0;
+		/*	$rootScope.queryResult.length=0;
 			   
-		/*	var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd");
+			var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd");
 			 
 			for(var i = 0  ;  i < $scope.custData.length ; i++){  
 				if(angular.isUndefined($scope.inputValue.CUST_ID ) || $scope.inputValue.CUST_ID == ''  || $scope.inputValue.CUST_ID == $scope.custData[i].CUST_ID){ 
@@ -16,10 +16,11 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 						}
 					}
 				} 
-			}*/
-
-			$scope.$emit('query',$scope.inputValue) 
-
+			}*/ 
+			
+			var inputValue = $scope.inputValue
+			$scope.$emit('query',inputValue)   
+	 	
 		}
 
 		$scope.clear = function () {
@@ -27,7 +28,7 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 				CUST_ID: '',
 				ENTRY_DATE: '',
 				CUST_NAME: '',
-				RESETGRADSELECT: '',
+				VIP_CODE: '',
 				
 			}
 			$rootScope.queryResult.length=0;

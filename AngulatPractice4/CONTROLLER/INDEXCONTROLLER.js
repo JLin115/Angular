@@ -235,12 +235,7 @@ eApp.controller('INDEX',
 				"DEPOSIT": 92110,
 				"ENTRY_DATE": "2014-05-11"
 			}
-		]
-
-		
-		$scope.test = function () {
-			$scope.$broadcast('custData', $scope.custData);
-		}
+		] 
 
 		$scope.init = function(){
 			$scope.queryPanelValue =0;
@@ -248,16 +243,13 @@ eApp.controller('INDEX',
 			$scope.querypanelLocation= $scope.panelLocation.query;
 			$scope.updatepanelLocation = $scope.panelLocation.update;
 		}
-
 		$scope.queryPanel = function () { 
 			if ($scope.queryPanelValue == 1) {
 				$scope.querypanelLocation= $scope.panelLocation.query;
 			} else {
 				$scope.querypanelLocation = $scope.panelLocation.none;
 			}
-
 		}
-
 		$scope.updatePanel = function () {
 			if ($scope.updatePanelValue == 1) {
 				$scope.updatepanelLocation = $scope.panelLocation.update;
@@ -265,10 +257,11 @@ eApp.controller('INDEX',
 				$scope.updatepanelLocation = $scope.panelLocation.none;
 			}
 		} 
-		$rootScope.queryResult=[];
 
-		$scope.$on('query',function($event, inputValue){ 
-			$scope.$broadcast('query2',inputValue) 
+		//$rootScope.queryResult=[];
+
+		$scope.$on('query',function($event, inputValue,flag){ 
+			$scope.$broadcast('query2',inputValue,$scope.custData) 
 		}) 
  
 

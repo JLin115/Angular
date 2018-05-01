@@ -1,10 +1,13 @@
 eApp.controller('QUERYRESULTPANEL', function ($scope) {
 
-    $scope.$on('query2',function($event, inputValue){ 
-        $scope.inputValue=inputValue
-    }) 
-	
+    var init = function () {
+        $scope.inputValue = '';
+        $scope.custData = '';
+    }
+
+    $scope.$on('query2', function ($event, inputValue, custData ) {
+            $scope.inputValue = inputValue;
+            $scope.custData = custData;
+    })
+    init();
 })
-
-
- 

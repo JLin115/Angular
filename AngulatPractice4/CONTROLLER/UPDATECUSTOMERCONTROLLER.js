@@ -14,7 +14,7 @@ eApp.controller('UPDATEPANEL', function ($scope) {
 			CUST_ID: '',
 			ENTRY_DATE: '',
 			CUST_NAME: '',
-			RESETGRADSELECT: ''
+			VIP_CODE: ''
 		}
 	} 
 })
