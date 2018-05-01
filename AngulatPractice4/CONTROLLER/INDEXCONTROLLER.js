@@ -6,8 +6,7 @@ eApp.controller('INDEX',
 			"update": "TEMPLATE/UPDATECUSTOMER.html",
 			"query": "TEMPLATE/QUERYCUSTOMER.html",
 			"queryRes":"TEMPLATE/QUERYRESULT.html"}
-		
-
+ 
 		$rootScope.custGrads = [{
 				"PARAM_ORDER": "1",
 				"PARAM_NAME": "一般",
@@ -235,8 +234,7 @@ eApp.controller('INDEX',
 				"DEPOSIT": 92110,
 				"ENTRY_DATE": "2014-05-11"
 			}
-		] 
-
+		]  
 		$scope.init = function(){
 			$scope.queryPanelValue =0;
 			$scope.updatePanelValue=0 ;
@@ -260,8 +258,11 @@ eApp.controller('INDEX',
 
 		//$rootScope.queryResult=[];
 
-		$scope.$on('query',function($event, inputValue,flag){ 
+		$scope.$on('query',function($event, inputValue){ 
 			$scope.$broadcast('query2',inputValue,$scope.custData) 
+		}) 
+		$scope.$on('clear',function($event ){ 
+			$scope.$broadcast('clear2','') 
 		}) 
  
 

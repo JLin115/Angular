@@ -13,7 +13,7 @@
 		<br>
 		<div>
 			<span>等級：</span>
-			<select ng-model="inputValue.RESETGRADSELECT" ng-options="custGrad.PARAM_NAME for custGrad in custGrads" ng-init="inputValue.RESETGRADSELECT=''">
+			<select ng-model="inputValue.VIP_CODE" ng-options="custGrad.PARAM_NAME for custGrad in custGrads" ng-init="inputValue.VIP_CODE=''">
 				<option value="">請選擇</option>
 			</select>
 		</div>
@@ -27,7 +27,7 @@
 			<input type="date" placeholder=" 年/月/日" ng-model="inputValue.ENTRY_DATE" ng-init="inputValue.ENTRY_DATE=''" />
 		</div>
 		<hr>
-		<button class="btn" ng-click="( queryNUpdatePanel.CUST_ID.$valid && queryNUpdatePanel.CUST_NAME.$valid ) &&  updateCustomer() ">查詢</button>&nbsp;
+		<button class="btn" ng-click="( queryNUpdatePanel.CUST_ID.$valid && queryNUpdatePanel.CUST_NAME.$valid ) &&  updateCustomer(inputValue) ">查詢</button>&nbsp;
 		<button ng-click="clear()">清除</button>
 	 
 	</form> 

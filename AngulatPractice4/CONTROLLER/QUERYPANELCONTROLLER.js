@@ -1,11 +1,8 @@
 eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 	//$filter('date')($scope.inputValue.ENTRY_DATE, 'yyyy-MM-dd')
-	$scope.queryCustomer = function () { 
-		 
-		/*	$rootScope.queryResult.length=0;
-			   
-			var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd");
-			 
+	$scope.queryCustomer = function () {  
+		/*	$rootScope.queryResult.length=0; 
+			var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd"); 
 			for(var i = 0  ;  i < $scope.custData.length ; i++){  
 				if(angular.isUndefined($scope.inputValue.CUST_ID ) || $scope.inputValue.CUST_ID == ''  || $scope.inputValue.CUST_ID == $scope.custData[i].CUST_ID){ 
 					if(angular.isUndefined($scope.inputValue.CUST_NAME ) || $scope.inputValue.CUST_NAME == ''  || $scope.inputValue.CUST_NAME == $scope.custData[i].CUST_NAME){
@@ -16,22 +13,18 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 						}
 					}
 				} 
-			}*/ 
-			
-			var inputValue = $scope.inputValue
-			$scope.$emit('query',inputValue)   
-	 	
-		}
-
+			}*/  
+			var inputValue = angular.copy($scope.inputValue) 
+			$scope.$emit('query',inputValue)    
+		} 
 		$scope.clear = function () {
 			$scope.inputValue = {
 				CUST_ID: '',
 				ENTRY_DATE: '',
 				CUST_NAME: '',
-				VIP_CODE: '',
-				
+				VIP_CODE: '', 
 			}
-			$rootScope.queryResult.length=0;
+			$scope.$emit('clear','')   
 		}
 	})
 	
