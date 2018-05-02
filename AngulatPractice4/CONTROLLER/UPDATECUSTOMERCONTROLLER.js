@@ -11,6 +11,14 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 		$scope.$emit('clear','') 
 	} 
 
+	$scope.$on('update',function($event, memberdata){ 
+	
+		angular.copy($scope.inputValue,memberdata) 
+		 
+		 alert()
+
+	}) 
+
 	$scope.updateCustomer = function (inputValue) {
 		//debugger 
 		//判斷輸入的資料是否存在表內

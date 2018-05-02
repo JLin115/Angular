@@ -261,6 +261,11 @@ eApp.controller('INDEX',
 		$scope.$on('query',function($event, inputValue){ 
 			$scope.$broadcast('query2',inputValue,$scope.custData) 
 		}) 
+
+		$scope.$on('toUpdate',function($event, inputValue){ 
+			$scope.$broadcast('update',inputValue) 
+		}) 
+
 		$scope.$on('clear',function($event ){ 
 			$scope.$broadcast('clear2','') 
 		}) 

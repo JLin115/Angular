@@ -15,7 +15,13 @@ eApp.controller('QUERYPANEL', function ($scope,$filter,$rootScope) {
 				} 
 			}*/  
 			var inputValue = angular.copy($scope.inputValue) 
-			$scope.$emit('query',inputValue)    
+			$scope.$emit('query',inputValue)   
+
+			debugger
+			var member = $filter('filter')($scope.custData , inputValue)
+
+			$scope.$emit('toUpdate',member)   
+
 		} 
 		$scope.clear = function () {
 			$scope.inputValue = {
