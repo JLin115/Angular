@@ -1,18 +1,28 @@
 <div class="panel" ng-controller="QUERYRESULTPANEL">
-		<table class="queryResultTable panel">
-			<tr>
-				<td>客戶編號</td>
-				<td>客戶名稱</td>
-				<td>等級</td>
-				<td>存款</td>
-				<td>入會日期</td>
-			</tr>
-			<tr ng-repeat="x in custData  |filter : inputValue   ">
-				<td ng-bind="x.CUST_ID"></td>
-				<td ng-bind="x.CUST_NAME"></td>
-				<td ng-repeat="y in custGrads |filter : x.VIP_CODE" ng-bind="y.PARAM_NAME"></td>
-				<td ng-bind="x.DEPOSIT | number : 0"></td>
-				<td ng-bind="x.ENTRY_DATE | date:'yyyy/MM/dd'"></td>
-			</tr>  
- 
-	</div>
+	<table class="queryResultTable panel">
+		<tr>
+			<td class="queryResultCustId" ng-click="booleanChoose('CUST_ID')">客戶編號
+				<span class="sortorder" ng-show="orderFlag === 'CUST_ID'" ng-class="{reverse: reverse}"></span>
+			</td>
+			<td class="queryResultCustId" ng-click="booleanChoose('CUST_NAME')">客戶名稱
+				<span class="sortorder" ng-show="orderFlag === 'CUST_NAME'" ng-class="{reverse: reverse}"></span>
+			</td>
+			<td class="queryResultCustId" ng-click="booleanChoose('VIP_CODE')">等級
+				<span class="sortorder" ng-show="orderFlag === 'VIP_CODE'" ng-class="{reverse: reverse}"></span>
+			</td>
+			<td class="queryResultCustId" ng-click="booleanChoose('DEPOSIT')">存款
+				<span class="sortorder" ng-show="orderFlag === 'DEPOSIT'" ng-class="{reverse: reverse}"></span>
+			</td>
+			<td class="queryResultCustId" ng-click="booleanChoose('ENTRY_DATE')">入會日期
+				<span class="sortorder" ng-show="orderFlag === 'ENTRY_DATE'" ng-class="{reverse: reverse}"></span>
+			</td>
+		</tr>
+		<tr ng-repeat="x in custData  | filter : inputValue   | orderBy : orderFlag : reverse  ">
+			<td class="queryResultCustId" ng-bind="x.CUST_ID" ng-click="toUpdate(x)"></td>
+			<td ng-bind="x.CUST_NAME"></td>
+			<td ng-repeat="y in custGrads | filter : x.VIP_CODE" ng-bind="y.PARAM_NAME"></td>
+			<td ng-bind="x.DEPOSIT | number : 0"></td>
+			<td ng-bind="x.ENTRY_DATE | date:'yyyy/MM/dd'"></td>
+		</tr>
+
+</div>

@@ -8,10 +8,11 @@
 	<!-- Module -->
 	<script src="app.js"></script>
 	<!-- Contrller -->
-	<script src="CONTROLLER/INDEXCONTROLLER.js"></script>
+	<script src="CONTROLLER/INDEX.js"></script>
 	<script src="CONTROLLER/QUERYPANELCONTROLLER.js"></script>
 	<script src="CONTROLLER/UPDATECUSTOMERCONTROLLER.js"></script>
 	<script src="CONTROLLER/QUERYRESULTCONTROLLER.js"></script>
+	<script src="CONTROLLER/CONTROLPANEL.js"></script>
 	<title>INDEX</title>
 	<style>
 		/**/
@@ -25,9 +26,9 @@
 			padding-bottom: 2.5%;
 		}
 
-		.panel>form>div { 
+		.panel>form>div {
 			display: inline-block;
-			margin : 2% 0;
+			margin: 2% 0;
 		}
 
 		/*--queryCustomer and updateCustomer panel css*/
@@ -53,15 +54,16 @@
 		.btn {
 			margin-left: 38%;
 		}
-		.PanelTitle{
-			background:#529df9 ;
-			display:block;
-			width:100%;
-			text-align: center; 
+
+		.PanelTitle {
+			background: #529df9;
+			display: block;
+			width: 100%;
+			text-align: center;
 		}
 
-		.btn_hiden{
-		display:none;
+		.hiden {
+			display: none;
 
 		}
 
@@ -77,28 +79,29 @@
 
 		}
 
-		 
+		.queryResultCustId {
+			color: blue;
+		}
+
+		.queryResultCustId:hover {
+			cursor: pointer;
+		}
+
+		.sortorder:after {
+			content: '\25b2';
+		}
+
+		.sortorder.reverse:after {
+			content: '\25bc';
+		}
 	</style>
 </head>
 
-<body ng-controller="INDEX" ng-init="init()" >
-
+<body ng-controller="INDEX" ng-init="init()">
 	<div style="width:50%; border:1px solid black;margin:0 auto;">
-
-		<div class="panel">
-			<div>
-				<span>查詢面板：</span>
-				<input type="checkbox" ng-click="queryPanel()" ng-model="queryPanelValue" ng-true-value="'1'" ng-false-value="'0'" ng-checked='1'
-				/>
-			</div>
-			<div>
-				<span>修改面板：</span>
-				<input type="checkbox" ng-click="updatePanel()" ng-model="updatePanelValue"  ng-true-value="'1'" ng-false-value="'0'" ng-checked='1'
-				/>
-			</div>
-		</div> 
-		<div ng-include="querypanelLocation"></div>
-		<div ng-include="updatepanelLocation"></div>
+		<div ng-include="panelLocation.controlPanel"></div>
+		<div ng-include="querypanelLocation" ng-class="{hiden : !queryPanelSwitch}"></div>
+		<div ng-include="updatepanelLocation" ng-class="{hiden : !updatePanelSwitch}"></div>
 		<div ng-include="panelLocation.queryRes"></div>
 	</div>
 </body>

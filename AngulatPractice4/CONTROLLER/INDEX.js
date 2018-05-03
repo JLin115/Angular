@@ -1,12 +1,14 @@
 eApp.controller('INDEX',
-	function ($scope,$rootScope) {
+	function ($scope, $rootScope) {
 
-		$scope.panelLocation = 
-			{"none": "",
+		$scope.panelLocation = {
+			"none": "",
 			"update": "TEMPLATE/UPDATECUSTOMER.html",
 			"query": "TEMPLATE/QUERYCUSTOMER.html",
-			"queryRes":"TEMPLATE/QUERYRESULT.html"}
- 
+			"queryRes": "TEMPLATE/QUERYRESULT.html",
+			"controlPanel": "TEMPLATE/CONTROLPANEL.html" 
+		}
+
 		$rootScope.custGrads = [{
 				"PARAM_ORDER": "1",
 				"PARAM_NAME": "一般",
@@ -234,16 +236,20 @@ eApp.controller('INDEX',
 				"DEPOSIT": 92110,
 				"ENTRY_DATE": "2014-05-11"
 			}
-		]  
-		$scope.init = function(){
-			$scope.queryPanelValue =0;
-			$scope.updatePanelValue=0 ;
-			$scope.querypanelLocation= $scope.panelLocation.query;
-			$scope.updatepanelLocation = $scope.panelLocation.update;
+		]
+		
+		$scope.init = function () {
+			$scope.queryPanelValue = 0;
+			$scope.updatePanelValue = 0;
+			$scope.querypanelLocation = $scope.panelLocation.query;
+			$scope.updatepanelLocation = $scope.panelLocation.update; 
+			$scope.queryPanelSwitch = true;
+			$scope.updatePanelSwitch =true;
 		}
-		$scope.queryPanel = function () { 
+		/*
+		$scope.queryPanel = function () {
 			if ($scope.queryPanelValue == 1) {
-				$scope.querypanelLocation= $scope.panelLocation.query;
+				$scope.querypanelLocation = $scope.panelLocation.query;
 			} else {
 				$scope.querypanelLocation = $scope.panelLocation.none;
 			}
@@ -254,25 +260,28 @@ eApp.controller('INDEX',
 			} else {
 				$scope.updatepanelLocation = $scope.panelLocation.none;
 			}
-		} 
-
+		}*/ 
 		//$rootScope.queryResult=[];
-
-		$scope.$on('query',function($event, inputValue){ 
-			$scope.$broadcast('query2',inputValue,$scope.custData) 
-		}) 
-
-		$scope.$on('toUpdate',function($event, inputValue){ 
-			$scope.$broadcast('update',inputValue) 
-		}) 
-
-		$scope.$on('clear',function($event ){ 
-			$scope.$broadcast('clear2','') 
-		}) 
+		$scope.$on('queryPanelValue', function ($event, inputValue) {
+			$scope.queryPanelSwitch = inputValue 
+		})
+		$scope.$on('updatePanelValue', function ($event, inputValue) {
+			$scope.updatePanelSwitch = inputValue 	
+		})
  
+		$scope.$on('query', function ($event, inputValue) {
+			$scope.$broadcast('query2', inputValue, $scope.custData)
+		})
+
+		$scope.$on('toUpdate', function ($event, inputValue) {
+			$scope.$broadcast('update', inputValue)
+		})
+
+		$scope.$on('clear', function ($event) {
+			$scope.$broadcast('clear2', '')
+		})
+
 
 
 	}
 );
-
-
