@@ -17,7 +17,7 @@
 				<span class="sortorder" ng-show="orderFlag === 'ENTRY_DATE'" ng-class="{reverse: reverse}"></span>
 			</td>
 		</tr>
-		<tr ng-repeat="x in custData  | filter : inputValue   | orderBy : orderFlag : reverse  ">
+		<tr ng-repeat="x in custData  | filter : inputValue   | orderBy : orderFlag : reverse | limitTo : 10  ">
 			<td class="queryResultCustId" ng-bind="x.CUST_ID" ng-click="toUpdate(x)"></td>
 			<td ng-bind="x.CUST_NAME"></td>
 			<td ng-repeat="y in custGrads | filter : x.VIP_CODE" ng-bind="y.PARAM_NAME"></td>
