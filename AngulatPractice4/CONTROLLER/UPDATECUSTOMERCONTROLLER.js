@@ -61,8 +61,7 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 							})
 						}
 					}
-				});
-				console.log($scope.custData)
+				}); 
 			} else {
 				alert('請輸入要修改的內容')
 			}

@@ -16,9 +16,8 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 				} 
 			}*/
 		var inputValue = angular.copy($scope.inputValue)
-		$scope.$emit('query', inputValue)
 
-		//暫時處理 問題: select選擇後查詢一次 再把他選到 "請選擇" 得到的值會是null
+		//暫時處理 問題: 等級選擇後查詢一次 再把他選到 "請選擇" 得到的值會是null
 		if (inputValue.VIP_CODE == null) {
 			inputValue.VIP_CODE = ''
 		}
@@ -26,9 +25,17 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			inputValue.ENTRY_DATE = ''
 		}
 
+		var member = $filter('filter')($scope.custData, inputValue)
+
+		if (member.length == 0) {
+			alert('查無結果')
+			$scope.$emit('clear', '')
+		} else {
+			$scope.$emit('query', inputValue)
+		}
+		 
 		//查詢時 判斷 若 面板有開  會員ID 姓名 都有輸入 將篩選結果傳給 update 
-		if (inputValue.CUST_NAME && inputValue.CUST_ID && $scope.updatePanelSwitch) {
-			var member = $filter('filter')($scope.custData, inputValue)
+		if (inputValue.CUST_NAME && inputValue.CUST_ID && $scope.updatePanelSwitch) { 
 			if (member.length == 1) {
 				$scope.$emit('toUpdate', member)
 			}

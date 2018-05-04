@@ -1,8 +1,7 @@
 eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
 
     //監聽查詢結果
-    $scope.$on('query2', function ($event, inputValue, custData) {
-        
+    $scope.$on('query2', function ($event, inputValue, custData) { 
         inputValue.ENTRY_DATE = $filter('date')(inputValue.ENTRY_DATE, 'yyyy-MM-dd')
         $scope.inputValue = inputValue
         $scope.custData = custData
