@@ -7,20 +7,33 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 			CUST_NAME: '',
 			VIP_CODE: '',
 			DEPOSIT: ''
-		}
-		$scope.$emit('clear', '')
+		} 
 	}
+	var temp = [];
 
 	//查詢後置入修改欄位
 	$scope.$on('update', function ($event, memberdata) {
-		if (memberdata.length == 1) {
+		if (memberdata.length == 1) { 
+			temp = memberdata;
+			fillData(memberdata)
+			/*
 			$scope.inputValue.CUST_ID = memberdata[0].CUST_ID
 			$scope.inputValue.ENTRY_DATE = new Date(memberdata[0].ENTRY_DATE)
 			$scope.inputValue.CUST_NAME = memberdata[0].CUST_NAME
 			$scope.inputValue.VIP_CODE = $filter('filter')($scope.custGrads, memberdata[0].VIP_CODE)[0]
 			$scope.inputValue.DEPOSIT = memberdata[0].DEPOSIT
+			*/
 		}
 	})
+
+	//將資料顯示到前端
+	var fillData = function(data){
+		$scope.inputValue.CUST_ID = data[0].CUST_ID
+		$scope.inputValue.ENTRY_DATE = new Date(data[0].ENTRY_DATE)
+		$scope.inputValue.CUST_NAME = data[0].CUST_NAME
+		$scope.inputValue.VIP_CODE = $filter('filter')($scope.custGrads, data[0].VIP_CODE)[0]
+		$scope.inputValue.DEPOSIT = data[0].DEPOSIT
+	}
 
 	//修改資料
 	$scope.updateCustomer = function (inputValue) {
@@ -31,7 +44,6 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 		});
 		if (member.length != 0) {
 			var errorMsg = []; 
-			if (inputValue.ENTRY_DATE || inputValue.DEPOSIT || inputValue.VIP_CODE) {
 				//找出要修改的資料
 				angular.forEach($scope.custData, function (data) {
 					if (parseInt(inputValue.CUST_ID) == parseInt(data.CUST_ID) &&
@@ -62,17 +74,16 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 						}
 					}
 				}); 
-			} else {
-				alert('請輸入要修改的內容')
-			}
+			
 		} else {
 			alert('請確認客戶編號及名稱')
 		}
 	}
 
 
-	$scope.clear = function () {
-		init()
+	$scope.reset = function () { 
+		fillData(temp)
 	}
+
 	init()
 })

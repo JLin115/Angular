@@ -1,5 +1,15 @@
 eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 
+	//初始化
+	var init =  function(){
+		$scope.inputValue = {
+			CUST_ID: '',
+			ENTRY_DATE: '',
+			CUST_NAME: '',
+			VIP_CODE: '',
+		} 
+	}
+
 	//查詢會員資料
 	$scope.queryCustomer = function () {
 		/*	$rootScope.queryResult.length=0; 
@@ -25,6 +35,7 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			inputValue.ENTRY_DATE = ''
 		}
 
+
 		var member = $filter('filter')($scope.custData, inputValue)
 
 		if (member.length == 0) {
@@ -32,24 +43,18 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			$scope.$emit('clear', '')
 		} else {
 			$scope.$emit('query', inputValue)
-		}
-		 
+		}　
+		
 		//查詢時 判斷 若 面板有開  會員ID 姓名 都有輸入 將篩選結果傳給 update 
-		if (inputValue.CUST_NAME && inputValue.CUST_ID && $scope.updatePanelSwitch) { 
-			if (member.length == 1) {
-				$scope.$emit('toUpdate', member)
-			}
+		if (  $scope.updatePanelSwitch &&　member.length == 1) { 　　
+				$scope.$emit('toUpdate', member)　
 		}
 	}
 
-
+	//清除
 	$scope.clear = function () {
-		$scope.inputValue = {
-			CUST_ID: '',
-			ENTRY_DATE: '',
-			CUST_NAME: '',
-			VIP_CODE: '',
-		}
-		$scope.$emit('clear', '')
-	}
+		init()
+	} 
+	 
+	init()
 })

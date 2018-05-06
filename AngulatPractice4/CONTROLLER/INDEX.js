@@ -1,6 +1,16 @@
 eApp.controller('INDEX',
 	function ($scope, $rootScope) {
 
+		//初始化
+		var init = function () {
+			$scope.queryPanelValue = 0;
+			$scope.updatePanelValue = 0;
+			$scope.querypanelLocation = $scope.panelLocation.query;
+			$scope.updatepanelLocation = $scope.panelLocation.update; 
+			$scope.queryPanelSwitch = true;
+			$scope.updatePanelSwitch =true;
+		}
+
 		$scope.panelLocation = {
 			"none": "",
 			"update": "TEMPLATE/UPDATECUSTOMER.html",
@@ -238,14 +248,7 @@ eApp.controller('INDEX',
 			}
 		]
 		
-		$scope.init = function () {
-			$scope.queryPanelValue = 0;
-			$scope.updatePanelValue = 0;
-			$scope.querypanelLocation = $scope.panelLocation.query;
-			$scope.updatepanelLocation = $scope.panelLocation.update; 
-			$scope.queryPanelSwitch = true;
-			$scope.updatePanelSwitch =true;
-		}
+		
 		/*
 		$scope.queryPanel = function () {
 			if ($scope.queryPanelValue == 1) {
@@ -282,6 +285,6 @@ eApp.controller('INDEX',
 		})
 
 
-
+		init();
 	}
 );
