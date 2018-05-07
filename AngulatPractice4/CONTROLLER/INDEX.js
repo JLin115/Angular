@@ -6,9 +6,9 @@ eApp.controller('INDEX',
 			$scope.queryPanelValue = 0;
 			$scope.updatePanelValue = 0;
 			$scope.querypanelLocation = $scope.panelLocation.query;
-			$scope.updatepanelLocation = $scope.panelLocation.update; 
+			$scope.updatepanelLocation = $scope.panelLocation.update;
 			$scope.queryPanelSwitch = true;
-			$scope.updatePanelSwitch =true;
+			$scope.updatePanelSwitch = true;
 		}
 
 		$scope.panelLocation = {
@@ -16,7 +16,7 @@ eApp.controller('INDEX',
 			"update": "TEMPLATE/UPDATECUSTOMER.html",
 			"query": "TEMPLATE/QUERYCUSTOMER.html",
 			"queryRes": "TEMPLATE/QUERYRESULT.html",
-			"controlPanel": "TEMPLATE/CONTROLPANEL.html" 
+			"controlPanel": "TEMPLATE/CONTROLPANEL.html"
 		}
 
 		$rootScope.custGrads = [{
@@ -247,8 +247,8 @@ eApp.controller('INDEX',
 				"ENTRY_DATE": "2014-05-11"
 			}
 		]
-		
-		
+
+
 		/*
 		$scope.queryPanel = function () {
 			if ($scope.queryPanelValue == 1) {
@@ -263,17 +263,17 @@ eApp.controller('INDEX',
 			} else {
 				$scope.updatepanelLocation = $scope.panelLocation.none;
 			}
-		}*/ 
+		}*/
 		//$rootScope.queryResult=[];
 		$scope.$on('queryPanelValue', function ($event, inputValue) {
-			$scope.queryPanelSwitch = inputValue 
+			$scope.queryPanelSwitch = inputValue
 		})
 		$scope.$on('updatePanelValue', function ($event, inputValue) {
-			$scope.updatePanelSwitch = inputValue 	
+			$scope.updatePanelSwitch = inputValue
 		})
- 
-		$scope.$on('query', function ($event, inputValue) {
-			$scope.$broadcast('query2', inputValue, $scope.custData)
+
+		$scope.$on('query', function ($event, queryResult) {
+			$scope.$broadcast('query2', queryResult)
 		})
 
 		$scope.$on('toUpdate', function ($event, inputValue) {

@@ -1,5 +1,5 @@
 eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
-  
+
     //初始化
     var init = function () {
         $scope.inputValue = ''
@@ -8,12 +8,12 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
         $scope.orderFlag = 'CUST_ID'; //default
         $scope.reverse = false;
     }
-    
+    //$scope.pageNow;
+    //$scope.pageTotal;
+
     //監聽查詢結果
-    $scope.$on('query2', function ($event, inputValue, custData) {
-        inputValue.ENTRY_DATE = $filter('date')(inputValue.ENTRY_DATE, 'yyyy-MM-dd')
-        $scope.inputValue = inputValue
-        $scope.custData = custData
+    $scope.$on('query2', function ($event, queryResult) {
+        $scope.custData = queryResult
 
     })
 
@@ -37,4 +37,24 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
     })
 
     init()
+})
+
+eApp.filter('memberGradFilter', function ($filter) {
+    return function (gradTable,data) {
+        if (data == '') { 
+            return ' '
+        } else {   
+            return $filter('filter')(gradTable,data)
+        } 
+    }
+})
+
+eApp.filter('memberDEPOSITFilter', function ($filter) {
+    return function (data) {
+        if (data == '') { 
+            return ''
+        } else {   
+            return $filter('number')(data,0)
+        } 
+    }
 })

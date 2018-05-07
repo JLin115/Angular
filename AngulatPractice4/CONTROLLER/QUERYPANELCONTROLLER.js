@@ -1,13 +1,13 @@
 eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 
 	//初始化
-	var init =  function(){
+	var init = function () {
 		$scope.inputValue = {
 			CUST_ID: '',
 			ENTRY_DATE: '',
 			CUST_NAME: '',
 			VIP_CODE: '',
-		} 
+		}
 	}
 
 	//查詢會員資料
@@ -26,7 +26,6 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 				} 
 			}*/
 		var inputValue = angular.copy($scope.inputValue)
-
 		//暫時處理 問題: 等級選擇後查詢一次 再把他選到 "請選擇" 得到的值會是null
 		if (inputValue.VIP_CODE == null) {
 			inputValue.VIP_CODE = ''
@@ -35,26 +34,25 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			inputValue.ENTRY_DATE = ''
 		}
 
+		var queryResult = $filter('filter')($scope.custData, inputValue)
 
-		var member = $filter('filter')($scope.custData, inputValue)
-
-		if (member.length == 0) {
+		if (queryResult.length == 0) {
 			alert('查無結果')
 			$scope.$emit('clear', '')
 		} else {
-			$scope.$emit('query', inputValue)
+			$scope.$emit('query', queryResult)
 		}　
-		
-		//查詢時 判斷 若 面板有開  會員ID 姓名 都有輸入 將篩選結果傳給 update 
-		if (  $scope.updatePanelSwitch &&　member.length == 1) { 　　
-				$scope.$emit('toUpdate', member)　
+
+		//查詢時 判斷若面板有開 以及結果只有一筆 將篩選結果傳給 update 
+		if ($scope.updatePanelSwitch && queryResult.length == 1) {　　
+			$scope.$emit('toUpdate', queryResult)　
 		}
 	}
 
 	//清除
 	$scope.clear = function () {
 		init()
-	} 
-	 
+	}
+
 	init()
 })
