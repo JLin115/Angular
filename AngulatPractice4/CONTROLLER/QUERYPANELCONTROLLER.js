@@ -11,23 +11,10 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 	}
 
 	//查詢會員資料
-	$scope.queryCustomer = function () {
-		/*	$rootScope.queryResult.length=0; 
-			var formatDate = $filter('date')( $scope.inputValue.ENTRY_DATE, "yyyy-MM-dd"); 
-			for(var i = 0  ;  i < $scope.custData.length ; i++){  
-				if(angular.isUndefined($scope.inputValue.CUST_ID ) || $scope.inputValue.CUST_ID == ''  || $scope.inputValue.CUST_ID == $scope.custData[i].CUST_ID){ 
-					if(angular.isUndefined($scope.inputValue.CUST_NAME ) || $scope.inputValue.CUST_NAME == ''  || $scope.inputValue.CUST_NAME == $scope.custData[i].CUST_NAME){
-						if($scope.inputValue.RESETGRADSELECT =='' ||$scope.inputValue.RESETGRADSELECT == $scope.custData[i].VIP_CODE){
-							if(!formatDate || angular.isUndefined(formatDate) || formatDate == ''  || formatDate == $scope.custData[i].ENTRY_DATE){
-								$rootScope.queryResult[$rootScope.queryResult.length] = $scope.custData[i];
-							}
-						}
-					}
-				} 
-			}*/
+	$scope.queryCustomer = function () { 
 		var inputValue = angular.copy($scope.inputValue)
 
-		//暫時處理 問題: 等級選擇後查詢一次 再把他選到 "請選擇" 得到的值會是null
+		//暫時處理 問題: 查詢面板 > 等級選擇後查詢一次 再把他選到 "請選擇" 得到的值會是null
 		if (inputValue.VIP_CODE == null) {
 			inputValue.VIP_CODE = ''
 		}
@@ -42,12 +29,13 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			alert('查無結果')
 			$scope.$emit('clear', '')
 		} else {
-			$scope.$emit('query', inputValue)
+			$scope.$emit('query', member)
 		}　
 		
 		//查詢時 判斷 若 面板有開  會員ID 姓名 都有輸入 將篩選結果傳給 update 
-		if (  $scope.updatePanelSwitch &&　member.length == 1) { 　　
-				$scope.$emit('toUpdate', member)　
+		if (  $scope.updatePanelSwitch &&　member.length == 1) { 
+				var dataCopy = angular.copy(member)　　
+				$scope.$emit('toUpdate', dataCopy)　
 		}
 	}
 

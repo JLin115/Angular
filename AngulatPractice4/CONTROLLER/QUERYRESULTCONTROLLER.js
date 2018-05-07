@@ -1,5 +1,5 @@
 eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
-  
+
     //初始化
     var init = function () {
         $scope.inputValue = ''
@@ -8,19 +8,17 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
         $scope.orderFlag = 'CUST_ID'; //default
         $scope.reverse = false;
     }
-    
-    //監聽查詢結果
-    $scope.$on('query2', function ($event, inputValue, custData) {
-        inputValue.ENTRY_DATE = $filter('date')(inputValue.ENTRY_DATE, 'yyyy-MM-dd')
-        $scope.inputValue = inputValue
-        $scope.custData = custData
 
+    //監聽查詢結果
+    $scope.$on('query2', function ($event, member) {  
+        $scope.custData = member 
     })
 
     //修改面板開啟時 點選id  將會員資料傳到修改面板 
     $scope.toUpdate = function (data) {
         if ($scope.updatePanelSwitch) {
-            var temp = [data]
+            var dataCopy = angular.copy(data)
+            var temp = [dataCopy]
             $scope.$emit('toUpdate', temp)
         }
     }
@@ -35,6 +33,26 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
     $scope.$on('clear2', function ($event) {
         init()
     })
-
     init()
+})
+
+
+eApp.filter('memberGradFilter', function ($filter) {
+    return function (gradTable, data) {
+        if (data == '') {
+            return ' '
+        } else {
+            return $filter('filter')(gradTable, data)
+        }
+    }
+})
+
+eApp.filter('memberDEPOSITFilter', function ($filter) {
+    return function (data) {
+        if (data == '') {
+            return ''
+        } else {
+            return $filter('number')(data, 0)
+        }
+    }
 })

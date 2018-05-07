@@ -272,8 +272,8 @@ eApp.controller('INDEX',
 			$scope.updatePanelSwitch = inputValue 	
 		})
  
-		$scope.$on('query', function ($event, inputValue) {
-			$scope.$broadcast('query2', inputValue, $scope.custData)
+		$scope.$on('query', function ($event, member) {
+			$scope.$broadcast('query2', member)
 		})
 
 		$scope.$on('toUpdate', function ($event, inputValue) {
