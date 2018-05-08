@@ -54,12 +54,8 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 					modifyData(data, inputValue)
 					temp[0] = angular.copy(data)
 					console.log(temp[0])
-				}
-
-			}
-
-
-
+				} 
+			}  
 		})
 
 	}
