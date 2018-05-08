@@ -7,17 +7,18 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
         $scope.orderFlag = 1;
         $scope.orderFlag = 'CUST_ID'; //default
         $scope.reverse = false;
-        $scope.pageSize = 10;
-        $scope.pageNow = 0;
-        $scope.pageTotal = [];
+        $scope.pageSize = 10;  //單頁 幾筆資料
+        $scope.pageNow = 0;  //目前第幾頁
+        $scope.pageTotal = [];  //總頁數
     }
 
     //監聽查詢結果
     $scope.$on('query2', function ($event, member) {
         //將總頁數歸零
         $scope.pageTotal.length = 0;
-        //算出總頁數
-        for (var i = 0; i < Math.round(member.length / $scope.pageSize); i++) {
+        //算出總頁數  
+
+        for (var i = 0; i < Math.ceil(parseFloat(member.length) /  parseFloat($scope.pageSize)); i++) {
             $scope.pageTotal[i] = i;
         }
         //查詢後將目前頁數導到第一頁
@@ -28,8 +29,7 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
     })
 
     //改變頁數
-    $scope.changePage = function (page) {
-        console.log(page)
+    $scope.changePage = function (page) { 
         if (page <= $scope.pageTotal.length && page > 0) {
             $scope.pageNow = parseInt(page)
         }

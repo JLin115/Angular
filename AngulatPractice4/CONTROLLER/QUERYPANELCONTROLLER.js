@@ -23,8 +23,7 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			inputValue.ENTRY_DATE = ''
 		} 
 		
-		var member = $filter('filter')($scope.custData, inputValue)
-
+		var member = $filter('filter')($scope.custData, inputValue) 
 		if (member.length == 0) {
 			alert('查無結果')
 			$scope.$emit('clear', '')
@@ -32,11 +31,7 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			$scope.$emit('query', member)
 		}　
 		
-		//查詢時 判斷 若 面板有開  會員ID 姓名 都有輸入 將篩選結果傳給 update 
-		if (  $scope.updatePanelSwitch &&　member.length == 1) { 
-				var dataCopy = angular.copy(member)　　
-				$scope.$emit('toUpdate', dataCopy)　
-		}
+	 
 	}
 
 	//清除

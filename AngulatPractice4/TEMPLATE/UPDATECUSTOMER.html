@@ -4,16 +4,19 @@
 	<form class="queryNUpdatePanel" name="queryNUpdatePanel">
 		<div>
 			<span>客戶編號：</span>
-			<input type="text" placeholder=" 請輸入..." name="CUST_ID" ng-model="inputValue.CUST_ID" ng-init="inputValue.CUST_ID=''" ng-required="true" />
+			<input type="text" placeholder=" 請輸入..."  ng-disabled="lockInput"   name="CUST_ID" ng-model="inputValue.CUST_ID" ng-init="inputValue.CUST_ID=''"
+			    ng-required="true" />
 		</div>
 		<div>
 			<span>客戶名稱：</span>
-			<input type="text" placeholder=" 請輸入..." name="CUST_NAME" ng-model="inputValue.CUST_NAME" ng-init="inputValue.CUST_NAME=''" ng-required="true" />
+			<input type="text" placeholder=" 請輸入..." name="CUST_NAME" ng-model="inputValue.CUST_NAME" ng-init="inputValue.CUST_NAME=''"
+			    ng-required="true" />
 		</div>
 		<br>
 		<div>
 			<span>等級：</span>
-			<select ng-model="inputValue.VIP_CODE" ng-options="custGrad.PARAM_CODE as custGrad.PARAM_NAME for custGrad in custGrads" ng-init="">
+			<select ng-model="inputValue.VIP_CODE" ng-options="custGrad.PARAM_CODE as custGrad.PARAM_NAME for custGrad in custGrads"
+			    ng-init="">
 				<option value="">請選擇</option>
 			</select>
 		</div>
@@ -23,12 +26,12 @@
 		</div>
 		<br>
 		<div>
-			<span>入會日期：</span> 
+			<span>入會日期：</span>
 			<input type="date" placeholder=" 年/月/日" ng-model="inputValue.ENTRY_DATE" ng-init="inputValue.ENTRY_DATE=''" />
 		</div>
 		<hr>
-		<button class="allBtn"   ng-click="( queryNUpdatePanel.CUST_ID.$valid && queryNUpdatePanel.CUST_NAME.$valid ) &&  updateCustomer(inputValue) ">修改</button>&nbsp;
+		<button class="allBtn" ng-click="( queryNUpdatePanel.CUST_ID.$valid && queryNUpdatePanel.CUST_NAME.$valid ) &&  updateCustomer(inputValue) ">修改</button>&nbsp;
 		<button ng-click="reset()">重設</button>
-	 
-	</form> 
+
+	</form>
 </div>

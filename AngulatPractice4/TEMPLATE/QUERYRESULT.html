@@ -18,7 +18,7 @@
 			</td>
 		</tr>
 		<tr ng-repeat="x in custData  | filter : inputValue   | orderBy : orderFlag : reverse | limitTo : pageSize : (pageNow-1) * pageSize ">
-			<td class="queryResultCustId" ng-bind="x.CUST_ID" ng-click="toUpdate(x)"></td>
+			<td class="queryResultCustId"  ng-bind="x.CUST_ID" ng-click="toUpdate(x)"></td>
 			<td ng-bind="x.CUST_NAME"></td>
 			<td ng-repeat="y in custGrads | memberGradFilter : x.VIP_CODE" ng-bind="y.PARAM_NAME"></td>
 			<td ng-bind="x.DEPOSIT | memberDEPOSITFilter "></td>
@@ -30,18 +30,20 @@
 
 	<nav aria-label="Page navigation example" ng-if="pageNow != 0" style="margin-top: 30px;">
 		<ul class="pagination justify-content-center">
-			<li class="page-item ">
+			<li class="page-item " ng-class="{disabled : pageNow == 1 }">
 				<a class="page-link" href="#" tabindex="-1" ng-click="changePage(pageNow-1)">Previous</a>
 			</li> 
+
 			<li class="page-item" ng-repeat="x in pageTotal | custLimitTo : pageNow :pageTotal">
 				<a class="page-link " ng-class="{currentPage : x+1 == pageNow }" ng-bind="x+1" ng-click="changePage(x+1)"></a>
 			</li> 
-			<li class="page-item">
+
+			<li class="page-item" ng-class="{disabled : pageNow == pageTotal.length }">
 				<a class="page-link"  href="#" ng-click="changePage(pageNow+1)">Next</a>
 			</li>
 
 		</ul>
-	</nav> 
+	</nav	> 
 
 
 
