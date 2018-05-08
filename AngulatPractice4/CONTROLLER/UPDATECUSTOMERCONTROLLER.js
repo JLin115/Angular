@@ -72,9 +72,9 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 			angular.forEach(errorMsg, function (data) {
 				alert(data)
 			})
-		}
-
+		} 
 	}
+	
 	//重置
 	$scope.reset = function () {
 		fillData(temp)

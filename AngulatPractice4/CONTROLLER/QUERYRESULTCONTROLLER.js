@@ -16,15 +16,17 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
     $scope.$on('query2', function ($event, member) {
         //將總頁數歸零
         $scope.pageTotal.length = 0;
-        //算出總頁數  
 
+        //算出總頁數   
         for (var i = 0; i < Math.ceil(parseFloat(member.length) /  parseFloat($scope.pageSize)); i++) {
             $scope.pageTotal[i] = i;
         }
+
         //查詢後將目前頁數導到第一頁
         if (member.length != 0  ) {
             $scope.pageNow = 1;
         }
+
         $scope.custData = member
     })
 
@@ -56,7 +58,6 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
     })
     init()
 })
-
 
 eApp.filter('memberGradFilter', function ($filter) {
     return function (gradTable, data) {

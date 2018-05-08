@@ -22,8 +22,10 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 		if (inputValue.ENTRY_DATE == null) {
 			inputValue.ENTRY_DATE = ''
 		} 
-		
+		//找出資料
 		var member = $filter('filter')($scope.custData, inputValue) 
+		
+		
 		if (member.length == 0) {
 			alert('查無結果')
 			$scope.$emit('clear', '')
