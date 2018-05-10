@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="eApp">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- AngularJS Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!--bootstrap-->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	    crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	    crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	    crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	    crossorigin="anonymous"></script>
+	<!-- Module -->
+	<script src="app.js"></script>
+	<!-- Contrller -->
+	<script src="INDEX.js"></script>
+	<title>INDEX</title>
+	<style>
+		.fix-table1-striped>tbody>tr:nth-child(even)>td,
+		.table-striped>tbody>tr:nth-child(even)>th {
+			background-color: #f9e3ee;
+		}
+
+		.fix-table1-striped>tbody>tr:nth-child(odd)>td,
+		.table-striped>tbody>tr:nth-child(odd)>th {
+			background-color: white;
+		}
+
+		.fix-table2-striped>tbody>tr:nth-child(even)>td,
+		.table-striped>tbody>tr:nth-child(even)>th {
+			background-color: #e9f7e3;
+		}
+
+		.fix-table2-striped>tbody>tr:nth-child(odd)>td,
+		.table-striped>tbody>tr:nth-child(odd)>th {
+			background-color: white;
+		}
+
+		body>div {
+			width: 90%;
+			margin: 5px auto;
+		}
+	</style>
+</head>
+
+<body ng-controller="INDEX">
+
+
+	<!--TABLE1-->
+	<div>
+		<table class="table   table-striped  text-center fix-table1-striped">
+			<thead class="thead-light table-bordered font-weight-bold">
+				<tr>
+					<th colspan="3">甲班</th>
+				</tr>
+				<tr>
+					<th style="width: 33.3%">編號</th>
+					<th style="width: 33.3%">名稱</th>
+					<th style="width: 33.3%">存款</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cust in custData | limitTo : 6">
+					<td ng-bind="cust.CUST_ID"></td>
+					<td ng-bind="cust.CUST_NAME"></td>
+					<td ng-bind="cust.DEPOSIT | number : 0"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!--TABLE2-->
+	<div>
+		<table class="table   table-striped  text-center fix-table2-striped">
+			<thead class="thead-light table-bordered font-weight-bold">
+				<tr>
+					<th colspan="3">乙班</th>
+				</tr>
+				<tr>
+					<th style="width: 33.3%">編號</th>
+					<th style="width: 33.3%">名稱</th>
+					<th style="width: 33.3%">存款</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="cust in custData | limitTo : 6">
+					<td ng-bind="cust.CUST_ID"></td>
+					<td ng-bind="cust.CUST_NAME"></td>
+					<td ng-bind="cust.DEPOSIT | number : 0"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>

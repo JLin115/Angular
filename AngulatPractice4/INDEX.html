@@ -71,11 +71,7 @@
 			width: 100%;
 			text-align: center;
 		}
-
-		.hiden {
-			display: none;
-
-		}
+ 
 
 		/*query Result Table*/
 
@@ -111,13 +107,13 @@
 	</style>
 </head>
 
-<body ng-controller="INDEX" ng-init="init()">
+<body ng-controller="INDEX as indexC" ng-init="init()">
 	<div style="width:50%; border:1px solid black;margin:0 auto;">
-		<div ng-include="panelLocation.controlPanel"></div>
-		<div ng-include="querypanelLocation" ng-class="{hiden : !queryPanelSwitch}"></div>
-		<div ng-include="updatepanelLocation" ng-class="{hiden : !updatePanelSwitch}"></div>
-		<div ng-include="panelLocation.queryRes"></div>
-	</div> 
+		<div ng-include="'TEMPLATE/CONTROLPANEL.html'"></div>
+		<div ng-include="'TEMPLATE/QUERYCUSTOMER.html'" ng-if="indexC.queryPanelValue"></div>
+		<div ng-include="'TEMPLATE/UPDATECUSTOMER.html'" ng-if="indexC.updatePanelValue"></div>
+		<div ng-include="'TEMPLATE/QUERYRESULT.html'"></div>
+	</div>  
 </body>
 
 </html>

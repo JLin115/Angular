@@ -74,7 +74,7 @@ eApp.controller('UPDATEPANEL', function ($scope, $filter) {
 			})
 		} 
 	}
-	
+
 	//重置
 	$scope.reset = function () {
 		fillData(temp)

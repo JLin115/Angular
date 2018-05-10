@@ -1,24 +1,13 @@
 eApp.controller('INDEX',
 	function ($scope, $rootScope) {
 
+		indexC = this;
 		//初始化
-		var init = function () {
-			$scope.queryPanelValue = 0;
-			$scope.updatePanelValue = 0;
-			$scope.querypanelLocation = $scope.panelLocation.query;
-			$scope.updatepanelLocation = $scope.panelLocation.update; 
-			$scope.queryPanelSwitch = true;
-			$scope.updatePanelSwitch =true;
+		var init = function () {  
+			indexC.queryPanelValue = true;
+			indexC.updatePanelValue = true; 
 		}
-
-		$scope.panelLocation = {
-			"none": "",
-			"update": "TEMPLATE/UPDATECUSTOMER.html",
-			"query": "TEMPLATE/QUERYCUSTOMER.html",
-			"queryRes": "TEMPLATE/QUERYRESULT.html",
-			"controlPanel": "TEMPLATE/CONTROLPANEL.html" 
-		}
-
+ 
 		$rootScope.custGrads = [{
 				"PARAM_ORDER": "1",
 				"PARAM_NAME": "一般",
@@ -246,32 +235,15 @@ eApp.controller('INDEX',
 				"DEPOSIT": 92110,
 				"ENTRY_DATE": "2014-05-11"
 			}
-		]
-		
-		
-		/*
-		$scope.queryPanel = function () {
-			if ($scope.queryPanelValue == 1) {
-				$scope.querypanelLocation = $scope.panelLocation.query;
-			} else {
-				$scope.querypanelLocation = $scope.panelLocation.none;
-			}
-		}
-		$scope.updatePanel = function () {
-			if ($scope.updatePanelValue == 1) {
-				$scope.updatepanelLocation = $scope.panelLocation.update;
-			} else {
-				$scope.updatepanelLocation = $scope.panelLocation.none;
-			}
-		}*/ 
-		//$rootScope.queryResult=[];
+		] 
+
 		$scope.$on('queryPanelValue', function ($event, inputValue) {
-			$scope.queryPanelSwitch = inputValue 
+			$scope.queryPanelValue = inputValue 
 		})
 		$scope.$on('updatePanelValue', function ($event, inputValue) {
-			$scope.updatePanelSwitch = inputValue 	
+			$scope.updatePanelValue = inputValue
 		})
- 
+
 		$scope.$on('query', function ($event, member) {
 			$scope.$broadcast('query2', member)
 		})
@@ -282,8 +254,7 @@ eApp.controller('INDEX',
 
 		$scope.$on('clear', function ($event) {
 			$scope.$broadcast('clear2', '')
-		})
-
+		}) 
 
 		init();
 	}

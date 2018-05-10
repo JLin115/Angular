@@ -7,8 +7,7 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 			ENTRY_DATE: '',
 			CUST_NAME: '',
 			VIP_CODE: '',
-		} 
-
+		}  
 	}
 
 	//查詢會員資料
@@ -24,16 +23,13 @@ eApp.controller('QUERYPANEL', function ($scope, $filter, $rootScope) {
 		} 
 		//找出資料
 		var member = $filter('filter')($scope.custData, inputValue) 
-		
-		
+		 
 		if (member.length == 0) {
 			alert('查無結果')
 			$scope.$emit('clear', '')
 		} else {
 			$scope.$emit('query', member)
-		}　
-		
-	 
+		}　 
 	}
 
 	//清除

@@ -39,10 +39,10 @@ eApp.controller('QUERYRESULTPANEL', function ($scope, $filter) {
 
     //修改面板開啟時 點選id  將會員資料傳到修改面板 
     $scope.toUpdate = function (data) {
-        if ($scope.updatePanelSwitch) {
+        if (indexC.updatePanelValue) {
             var dataCopy = angular.copy(data)
             var temp = [dataCopy]
-            $scope.$emit('toUpdate', temp)
+            $scope.$emit('toUpdate', temp) 
         }
     }
 
