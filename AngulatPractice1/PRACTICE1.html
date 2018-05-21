@@ -25,21 +25,18 @@
 <body ng-controller="PRACTICE1">
 	<form name="inputForm">
 		<span>編號:</span>
-		<input type="number" ng-required="true" name="id" ng-model="inputValue.id" ng-init="inputValue.id='' ">
+		<input type="number" ng-required="true" name="id" ng-model="inputValue.id" >
 		<span>姓名:</span>
-		<input type="text" name="name" ng-required="true" ng-model="inputValue.name" ng-init="inputValue.name='' ">
+		<input type="text" name="name" ng-required="true" ng-model="inputValue.name">
 		<br>
 		<span ng-class="{'error': inputForm.name.$valid  || inputForm.id.$valid }" class="default">test ng-class</span>
 		<button ng-click="( inputForm.name.$valid || inputForm.id.$valid  ) && query()">查詢</button>&nbsp;
 		<button ng-click="clear() ">清除</button> 
+		
 	</form>
 
 
-	<div ng-repeat="x in custData" > 
-		{{x.CUST_NAME}}
-		<span ng-repeat="y in custGrads | filter : x.VIP_CODE "  ng-bind="y.PARAM_NAME"> 
-		</span>
-	</div>
+
  
 </body>
 

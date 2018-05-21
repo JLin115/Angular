@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html ng-app="eApp">
-	<head>
-	    <meta charset="UTF-8">
-	    <!-- AngularJS Library -->
-	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	    <!-- Module -->
-	    <script src="app.js"></script>
-	    <!-- Contrller -->
-	    <script src="PRACTICE.js"></script>
-	    <title>PRACTICE</title>
-		<style>
-		table{
-		width:60%;
-		margin:0  auto;
-		border:1px solid black; 
-		border-spacing:0;
-		text-align:center;
+
+<head>
+	<meta charset="UTF-8">
+	<!-- AngularJS Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Module -->
+	<script src="app.js"></script>
+	<!-- Contrller -->
+	<script src="PRACTICE.js"></script>
+	<title>PRACTICE</title>
+	<style>
+		table {
+			width: 60%;
+			margin: 0 auto;
+			border: 1px solid black;
+			border-spacing: 0;
+			text-align: center;
 		}
-		
-		
-		</style>
-	</head>
-	<body ng-controller="PRACTICE">
-	
+	</style>
+</head>
+
+<body ng-controller="PRACTICE">
+
 	<table border="1">
 		<tr>
-		<td>編號</td>
-		<td>名稱</td>
-		<td>存款</td>
+			<td>編號</td>
+			<td>名稱</td>
+			<td>存款</td>
 		</tr>
-		<tr ng-repeat="x in custDatas | limitTo: 5">
-		<td ng-bind="x.CUST_ID"></td>
-		<td ng-bind="x.CUST_NAME"></td>
-		<td ng-bind="x.DEPOSIT | number:0"></td>
-		</tr>
-	
-	
-	
+		<tr ng-repeat="x in custDatas | limitTo: 4">
+			<td ng-bind="x.CUST_ID   "></td>
+			<td ng-bind="x.CUST_NAME"></td>
+			<td ng-bind="x.DEPOSIT | number:0"></td>
+		</tr> 
 	</table>
-	
-	
-		 
-	</body>
+
+
+
+</body>
+
 </html>
