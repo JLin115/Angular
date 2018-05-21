@@ -20,81 +20,73 @@
 	<script src="INDEX.js"></script>
 	<title>INDEX</title>
 	<style>
-		.fix-table1-striped>tbody>tr:nth-child(even)>td,
-		.table-striped>tbody>tr:nth-child(even)>th {
+		.h2_fix {
+			margin-bottom: 0;
+		}
+
+		.bg1:nth-of-type(even) {
 			background-color: #f9e3ee;
 		}
 
-		.fix-table1-striped>tbody>tr:nth-child(odd)>td,
-		.table-striped>tbody>tr:nth-child(odd)>th {
-			background-color: white;
-		}
-
-		.fix-table2-striped>tbody>tr:nth-child(even)>td,
-		.table-striped>tbody>tr:nth-child(even)>th {
+		.bg2:nth-of-type(even) {
 			background-color: #e9f7e3;
 		}
 
-		.fix-table2-striped>tbody>tr:nth-child(odd)>td,
-		.table-striped>tbody>tr:nth-child(odd)>th {
-			background-color: white;
+		.container {
+			display: inline-block;
 		}
 
-		body>div {
-			width: 90%;
-			margin: 5px auto;
+		@media (min-width: 768px) {
+			.container{
+				max-width: 45%;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.container {
+				max-width:90%;
+			}
 		}
 	</style>
 </head>
 
 <body ng-controller="INDEX">
 
-
-	<!--TABLE1-->
-	<div>
-		<table class="table   table-striped  text-center fix-table1-striped">
-			<thead class="thead-light table-bordered font-weight-bold">
-				<tr>
-					<th colspan="3">甲班</th>
-				</tr>
-				<tr  class="d-flex">
-					<th class="col-3">編號</th>
-					<th class="col-4">名稱</th>
-					<th class="col-5">存款</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="cust in custData | limitTo : 6">
-					<td ng-bind="cust.CUST_ID"></td>
-					<td ng-bind="cust.CUST_NAME"></td>
-					<td ng-bind="cust.DEPOSIT | number : 0"></td>
-				</tr>
-			</tbody>
-		</table>
+<div class=" text-center ">
+	<div class="container mt-4">
+		<div class="row text-center bg-light h2 h2_fix">
+			<div class="col-12 border p-4 text-secondary">甲班</div>
+		</div>
+		<div class="row text-center bg-light font-weight-bold text-secondary">
+			<div class="col-4 border p-3 ">編號</div>
+			<div class="col-4 border p-3 ">名稱</div>
+			<div class="col-4 border p-3 ">存款</div>
+		</div>
+		<div class="row text-center  bg1" ng-repeat="cust in custData | limitTo : 6">
+			<div class="col-4" ng-bind="cust.CUST_ID"></div>
+			<div class="col-4 text-secondary" ng-bind="cust.CUST_NAME"></div>
+			<div class="col-4 text-right" ng-bind="cust.DEPOSIT | number : 0"></div>
+		</div>
 	</div>
 
-	<!--TABLE2-->
-	<div>
-		<table class="table   table-striped  text-center fix-table2-striped">
-			<thead class="thead-light table-bordered font-weight-bold">
-				<tr>
-					<th colspan="3">乙班</th>
-				</tr>
-				<tr>
-					<th style="width: 33.3%">編號</th>
-					<th style="width: 33.3%">名稱</th>
-					<th style="width: 33.3%">存款</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="cust in custData | limitTo : 6">
-					<td ng-bind="cust.CUST_ID"></td>
-					<td ng-bind="cust.CUST_NAME"></td>
-					<td ng-bind="cust.DEPOSIT | number : 0"></td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="container  mt-4">
+		<div class="row text-center bg-light h2 h2_fix">
+			<div class="col-12 border p-4 text-secondary">乙班</div>
+		</div>
+		<div class="row text-center bg-light font-weight-bold text-secondary">
+			<div class="col-4 border p-3 ">編號</div>
+			<div class="col-4 border p-3 ">名稱</div>
+			<div class="col-4 border p-3 ">存款</div>
+		</div>
+		<div class="row text-center  bg2" ng-repeat="cust in custData | limitTo : 6">
+			<div class="col-4" ng-bind="cust.CUST_ID"></div>
+			<div class="col-4 text-secondary" ng-bind="cust.CUST_NAME"></div>
+			<div class="col-4 text-right" ng-bind="cust.DEPOSIT | number : 0"></div>
+		</div>
 	</div>
+</div>
+
+
 </body>
 
 </html>

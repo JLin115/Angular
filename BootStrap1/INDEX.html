@@ -55,7 +55,7 @@
 		<table class="table   table-striped  text-center fix-table1-striped">
 			<thead class="thead-light table-bordered font-weight-bold">
 				<tr>
-					<th colspan="3">甲班</th>
+					<th colspan="3"  class="h2">甲班</th>
 				</tr>
 				<tr>
 					<th style="width: 33.3%">編號</th>
@@ -67,7 +67,7 @@
 				<tr ng-repeat="cust in custData | limitTo : 6">
 					<td ng-bind="cust.CUST_ID"></td>
 					<td ng-bind="cust.CUST_NAME"></td>
-					<td ng-bind="cust.DEPOSIT | number : 0"></td>
+					<td ng-bind="cust.DEPOSIT | number : 0" class="text-right"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -78,7 +78,7 @@
 		<table class="table   table-striped  text-center fix-table2-striped">
 			<thead class="thead-light table-bordered font-weight-bold">
 				<tr>
-					<th colspan="3">乙班</th>
+					<th colspan="3" class="h2">乙班</th>
 				</tr>
 				<tr>
 					<th style="width: 33.3%">編號</th>
@@ -90,7 +90,7 @@
 				<tr ng-repeat="cust in custData | limitTo : 6">
 					<td ng-bind="cust.CUST_ID"></td>
 					<td ng-bind="cust.CUST_NAME"></td>
-					<td ng-bind="cust.DEPOSIT | number : 0"></td>
+					<td ng-bind="cust.DEPOSIT | number : 0" class="text-right"></td>
 				</tr>
 			</tbody>
 		</table>
