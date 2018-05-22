@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html ng-app="eApp">
-	<head>
-	    <meta charset="UTF-8">
-	    <!-- AngularJS Library -->
-	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	    <!-- Module -->
-	    <script src="app.js"></script>
-	    <!-- Contrller -->
-	    <script src="PRACTICE.js"></script>
-	    <title>PRACTICE</title>
-		<style>
-		table{
-		width:60%;
-		margin:0  auto;
-		border:1px solid black; 
-		border-spacing:0; 
+
+<head>
+	<meta charset="UTF-8">
+	<!-- AngularJS Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- Module -->
+	<script src="app.js"></script>
+	<!-- Contrller -->
+	<script src="PRACTICE.js"></script>
+	<title>PRACTICE</title>
+	<style>
+		table {
+			width: 60%;
+			margin: 0 auto;
+			text-align: center;
+			border-collapse: separate !important;
+			border-spacing: 0;
+			border-radius: 20px; 
+		}
+
+		table td {
+			padding: 5px;
+			border: 0.5px solid white;
+			
 		} 
-		</style>
-	</head>
-	<body ng-controller="PRACTICE"> 
-	<table border="1">
+		table tr:first-child {
+			background-color: #4ca2f7;
+			color: white;
+		} 
+		table tr:nth-of-type(2n+3) {
+			background-color: #b3eff9;
+		} 
+		table td:nth-of-type(1) {
+			width: 150px;
+		}
+		table td:nth-of-type(2) {
+			width: 180px;
+		}
+	</style>
+</head>
+
+<body ng-controller="PRACTICE">
+	<div style=" width: 56%; margin:10px auto;">
+		<span>開始：</span>
+		<input type="date" ng-model="min" ng-change="getcol(min,max)">
+		<span>結束：</span>
+		<input type="date" ng-model="max" ng-change="getcol(min,max)">
+	</div>
+	<table>
 		<tr>
-			<td>編號</td>
 			<td>欄位A</td>
 			<td>欄位B</td>
+			<td ng-repeat="x in res" ng-bind="x"></td>
 		</tr>
-		<tr ng-repeat="x in custDatas" >
-			<td>{{ $index + 5  }}</td>
-			<td ng-bind-html="x.A | formatName | trustAsHtml"></td>
-			<td ng-bind-html="x.B | formatData | trustAsHtml"></td> 
-		</tr> 
-	</table> 
-	</body>
+		<tr ng-repeat="y in data">
+			<td ng-bind="y.A"></td>
+			<td ng-bind="y.B"></td>
+			<td ng-repeat="z in res " ng-bind="z | dateFilter : y.date"></td>
+		</tr>
+
+	</table>
+</body>
+
 </html>
