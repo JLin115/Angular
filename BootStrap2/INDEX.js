@@ -7,7 +7,5 @@ eApp.controller('INDEX',
 		error(function (data) {
 			alert('error')
 		});
-
-	 
-
+ 
 	});
